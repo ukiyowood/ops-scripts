@@ -5,6 +5,8 @@ yum install -y expect
 
 #设置主机名和密码
 PWD=nccloud001
+
+##HOSTS也可以从文件读，把这行注释掉
 HOSTS="10.10.18.231 10.10.18.232"
 
 #生成密钥
@@ -34,6 +36,8 @@ auto_ssh_copy_id () {
 #开始执行...
 key_generate
 
+#从文件读ip列表
+#for host in `cat ip.list`
 for host in $HOSTS
 do
 	auto_ssh_copy_id $host $PWD
